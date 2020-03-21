@@ -51,13 +51,13 @@ class JourneyParticipant
      * @var string
      * @ORM\Column(type="text", nullable=true)
      */
-    private string $comment;
+    private ?string $comment;
 
     public function __construct(
         UserData $userData,
         ExpectedPrice $expectedPrice,
         JourneyType $journeyType,
-        string $comment
+        string $comment = null
     )
     {
         $this->firstName = $userData->getFirstName();
@@ -88,6 +88,16 @@ class JourneyParticipant
         return sprintf("%s %s", $this->firstName, $this->lastName);
     }
 
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
     public function setExpectedPrice(ExpectedPrice $expectedPrice): void
     {
         $this->expectedPrice = $expectedPrice;
@@ -108,12 +118,12 @@ class JourneyParticipant
         return $this->journeyType;
     }
 
-    public function setComment(string $comment): void
+    public function setComment(string $comment = null): void
     {
         $this->comment = $comment;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
