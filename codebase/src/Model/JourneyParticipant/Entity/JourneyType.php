@@ -45,4 +45,12 @@ class JourneyType
     {
         return $this->value;
     }
+
+    public static function getValues(): array
+    {
+        return [
+            self::ONE_DIRECTION,
+            self::TWO_DIRECTIONS,
+        ];
+    }
 }

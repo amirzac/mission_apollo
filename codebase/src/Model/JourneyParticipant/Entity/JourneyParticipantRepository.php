@@ -23,4 +23,14 @@ class JourneyParticipantRepository
     {
         $this->em->persist($journeyParticipant);
     }
+
+    public function hasByEmail(string $email): bool
+    {
+        return $this->repo->createQueryBuilder('t')
+                ->select('COUNT(t.id)')
+                ->andWhere('t.email = :email')
+                ->setParameter(':email', $email)
+                ->getQuery()->getSingleScalarResult() > 0;
+    }
+
 }
