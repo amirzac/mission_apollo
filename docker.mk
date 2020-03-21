@@ -11,7 +11,7 @@ help : docker.mk
 ## install
 install:
 	@echo "Starting up containers for for $(PROJECT_NAME)..."
-	copy_env
+	@cp codebase/.env codebase/.env.local
 	docker-compose pull
 	docker-compose up -d --remove-orphans
 	@echo "Installing composer dependencies"
@@ -20,9 +20,6 @@ install:
 	@docker-compose exec php bin/console doctrine:migrations:migrate --no-interaction
 	@echo "Load fixtures"
 	@docker-compose exec php bin/console doctrine:fixtures:load --no-interaction
-
-copy_env:
-	@cp codebase/.env codebase/.env.local
 
 ## up	:	Start up containers.
 up:
