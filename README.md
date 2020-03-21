@@ -1,9 +1,7 @@
 ## Installation via docker:
-* `cd project_folder`
-* create `.env.local` file based on `.env`
 * `make install`
 
-## Base url's:
+## Base url:
 * Application: `http://mission-apollo.localhost:8000`
 
 ## Run tests:
