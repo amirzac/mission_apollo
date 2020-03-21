@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Expected price</th>
+                <th scope="col">Journey type</th>
+                <th scope="col">Comment</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for participant in pagination %}
+                <tr>
+                    <td>{{ participant.first_name }} {{ participant.last_name }}</td>
+                    <td>{{ participant.email }}</td>
+                    <td>{{ journey_price(participant.expected_price) }}</td>
+                    <td>{{ journey_type(participant.journey_type) }}</td>
+                    <td>{{ participant.comment|slice(0, 50) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}
