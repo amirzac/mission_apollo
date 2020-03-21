@@ -6,8 +6,8 @@ doctrine:
         # either here or in the DATABASE_URL env var (see .env file)
         #server_version: '5.7'
         types:
-            journey_price: 'App\Model\ParticipantJourney\Entity\OrmType\ExpectedPriceType'
-            journey_type: 'App\Model\ParticipantJourney\Entity\OrmType\JourneyType'
+            journey_price: 'App\Model\JourneyParticipant\Entity\OrmType\ExpectedPriceType'
+            journey_type: 'App\Model\JourneyParticipant\Entity\OrmType\JourneyType'
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
@@ -16,6 +16,6 @@ doctrine:
             ParticipantJourney:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Model/ParticipantJourney/Entity'
-                prefix: 'App\Model\ParticipantJourney\Entity'
+                dir: '%kernel.project_dir%/src/Model/JourneyParticipant/Entity'
+                prefix: 'App\Model\JourneyParticipant\Entity'
                 alias: ParticipantJourney

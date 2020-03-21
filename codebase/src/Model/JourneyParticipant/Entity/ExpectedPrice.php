@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\ParticipantJourney\Entity;
+namespace App\Model\JourneyParticipant\Entity;
 
 use Webmozart\Assert\Assert;
 
@@ -28,12 +28,12 @@ class ExpectedPrice
 
     public static function TenFifty(): self
     {
-        return new self(self::ZERO_TEN);
+        return new self(self::TEN_FIFTY);
     }
 
     public static function FiftyOneHundred(): self
     {
-        return new self(self::ZERO_TEN);
+        return new self(self::FIFTY_ONE_HUNDRED);
     }
 
     public function isZeroTen(): bool

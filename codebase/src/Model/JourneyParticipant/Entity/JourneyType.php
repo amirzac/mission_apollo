@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Model\ParticipantJourney\Entity;
+namespace App\Model\JourneyParticipant\Entity;
 
 use Webmozart\Assert\Assert;
 
@@ -14,21 +14,21 @@ class JourneyType
 
     private int $value;
 
-    public function __construct(int $value)
+    public function __construct(bool $value)
     {
         Assert::boolean($value);
 
-        $this->value = $value;
+        $this->value = intval($value);
     }
 
     public static function oneDirection(): self
     {
-        return new self(self::ONE_DIRECTION);
+        return new self(boolval(self::ONE_DIRECTION));
     }
 
     public static function twoDirections(): self
     {
-        return new self(self::TWO_DIRECTIONS);
+        return new self(boolval(self::TWO_DIRECTIONS));
     }
 
     public function isOneDirection(): bool
@@ -39,5 +39,10 @@ class JourneyType
     public function isTwoDirections(): bool
     {
         return $this->value === self::TWO_DIRECTIONS;
+    }
+
+    public function getValue(): int
+    {
+        return $this->value;
     }
 }

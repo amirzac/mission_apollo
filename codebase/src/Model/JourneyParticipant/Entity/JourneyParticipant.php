@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Model\ParticipantJourney\Entity;
+namespace App\Model\JourneyParticipant\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
- * @ORM\Table(name="participant_journey")
+ * @ORM\Table(name="journey_participant")
  */
-class ParticipantJourney
+class JourneyParticipant
 {
     /**
      * @ORM\Id()
@@ -53,6 +53,21 @@ class ParticipantJourney
      */
     private string $comment;
 
+    public function __construct(
+        UserData $userData,
+        ExpectedPrice $expectedPrice,
+        JourneyType $journeyType,
+        string $comment
+    )
+    {
+        $this->firstName = $userData->getFirstName();
+        $this->lastName = $userData->getLastName();
+        $this->email = $userData->getEmail();
+        $this->expectedPrice = $expectedPrice;
+        $this->journeyType = $journeyType;
+        $this->comment = $comment;
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -63,19 +78,14 @@ class ParticipantJourney
         $this->firstName = $firstName;
     }
 
-    public function getFirstName(): string
-    {
-        return $this->firstName;
-    }
-
     public function setLastName(string $lastName): void
     {
         $this->lastName = $lastName;
     }
 
-    public function getLastName(): string
+    public function getDisplayedName(): string
     {
-        return $this->lastName;
+        return sprintf("%s %s", $this->firstName, $this->lastName);
     }
 
     public function setExpectedPrice(ExpectedPrice $expectedPrice): void

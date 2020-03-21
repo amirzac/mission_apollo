@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Model\ParticipantJourney\Entity\OrmType;
+namespace App\Model\JourneyParticipant\Entity\OrmType;
 
-use App\Model\ParticipantJourney\Entity\JourneyType as JourneyTypeEntity;
+use App\Model\JourneyParticipant\Entity\JourneyType as JourneyTypeEntity;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\SmallIntType;
 
@@ -14,7 +14,7 @@ class JourneyType extends SmallIntType
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        return $value instanceof JourneyTypeEntity ? $value->getName() : $value;
+        return $value instanceof JourneyTypeEntity ? $value->getValue() : $value;
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
