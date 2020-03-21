@@ -11,7 +11,6 @@ help : docker.mk
 ## install
 install:
 	@echo "Starting up containers for for $(PROJECT_NAME)..."
-	@cp codebase/.env codebase/.env.local
 	docker-compose pull
 	docker-compose up -d --remove-orphans
 	@echo "Installing composer dependencies"
