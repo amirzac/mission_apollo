@@ -32,7 +32,9 @@ class Form extends AbstractType
                     'Two directions' => JourneyType::TWO_DIRECTIONS,
                 ],
             ])
-            ->add('comment', Type\TextareaType::class);
+            ->add('comment', Type\TextareaType::class, [
+                'required'   => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

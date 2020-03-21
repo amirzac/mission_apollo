@@ -2,7 +2,7 @@
 * `make install`
 
 ## Base url:
-* Application: `http://mission-apollo.localhost:8000` (requires /etc/hosts changing)
+* Application: `http://mission-apollo-mirzac.localhost:8000` (requires /etc/hosts change)
 
 ## Run tests:
 * `make test` 
